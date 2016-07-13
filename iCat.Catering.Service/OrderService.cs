@@ -150,6 +150,12 @@ namespace iCat.Catering.Service
             #endregion
         }
         #endregion
+
+
+        public OrderData GetData(EntityOrder order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

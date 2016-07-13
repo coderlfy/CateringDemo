@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{acbe0c89-18e3-4187-bd35-db5e7ec02e6e}</ProjectGuid>
+    <ProjectGuid>{ACBE0C89-18E3-4187-BD35-DB5E7EC02E6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>iCat.Catering.Dao</RootNamespace>
@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Spring.Core">
+      <HintPath>..\CommonDLL\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\CommonDLL\Spring.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,23 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<Compile Include="FoodDao.cs" />
-<Compile Include="OrderDao.cs" />
-<Compile Include="OrderDetailDao.cs" />
-<Compile Include="TypeCodeDao.cs" />
-
+    <Compile Include="FoodDao.cs" />
+    <Compile Include="OrderDao.cs" />
+    <Compile Include="OrderDetailDao.cs" />
+    <Compile Include="TypeCodeDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<ProjectReference Include="..\iCat.Catering.IDao\iCat.Catering.IDao.csproj">
-          <Project>{de23fbc9-da48-479f-94dd-bc3477d7e28d}</Project>
-          <Name>iCat.Catering.IDao</Name>
-        </ProjectReference>
-<ProjectReference Include="..\iCat.Catering.Model\iCat.Catering.Model.csproj">
-          <Project>{7135e608-390a-4303-8aac-e9e53048cbf6}</Project>
-          <Name>iCat.Catering.Model</Name>
-        </ProjectReference>
+    <ProjectReference Include="..\CustomSpring.Core\CustomSpring.Core.csproj">
+      <Project>{4de64906-b976-4de5-a7d3-35772dd086c1}</Project>
+      <Name>CustomSpring.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foundation.Core\Foundation.Core.csproj">
+      <Project>{398b7fee-94cd-4f66-a5b4-180f8e443c83}</Project>
+      <Name>Foundation.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iCat.Catering.IDao\iCat.Catering.IDao.csproj">
+      <Project>{de23fbc9-da48-479f-94dd-bc3477d7e28d}</Project>
+      <Name>iCat.Catering.IDao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iCat.Catering.Model\iCat.Catering.Model.csproj">
+      <Project>{7135e608-390a-4303-8aac-e9e53048cbf6}</Project>
+      <Name>iCat.Catering.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

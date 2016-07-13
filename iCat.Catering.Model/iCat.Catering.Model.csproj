@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Foundation.Core\Foundation.Core.csproj">
+      <Project>{398b7fee-94cd-4f66-a5b4-180f8e443c83}</Project>
+      <Name>Foundation.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iCat.Catering.DBMapping\iCat.Catering.DBMapping.csproj">
       <Project>{22a24609-9758-4b14-b7ee-895babb6c28f}</Project>
       <Name>iCat.Catering.DBMapping</Name>

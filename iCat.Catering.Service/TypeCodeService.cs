@@ -150,6 +150,12 @@ namespace iCat.Catering.Service
             #endregion
         }
         #endregion
+
+
+        public TypeCodeData GetData(EntityTypeCode typeCode)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

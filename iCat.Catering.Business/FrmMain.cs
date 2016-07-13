@@ -1,8 +1,8 @@
 ﻿using CustomSpring.Core;
 using Foundation.Core;
-using Catering.Service.customize;
-using Catering.Service.threads;
-using Catering.Service.wcfhost;
+using NormalDocumentOffice.WinServer.customize;
+using NormalDocumentOffice.WinServer.threads;
+using NormalDocumentOffice.WinServer.wcfhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

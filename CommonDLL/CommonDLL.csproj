@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{39CA0989-8622-4373-A40B-D495894CFA9C}</ProjectGuid>
+    <ProjectGuid>{881FD559-5A85-471A-89CE-23117FF6BDFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iCat.Catering.Service</RootNamespace>
-    <AssemblyName>iCat.Catering.Service</AssemblyName>
+    <RootNamespace>CommonDLL</RootNamespace>
+    <AssemblyName>CommonDLL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,33 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodService.cs" />
-    <Compile Include="OrderService.cs" />
-    <Compile Include="OrderDetailService.cs" />
-    <Compile Include="TypeCodeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Foundation.Core\Foundation.Core.csproj">
-      <Project>{398b7fee-94cd-4f66-a5b4-180f8e443c83}</Project>
-      <Name>Foundation.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iCat.Catering.IDao\iCat.Catering.IDao.csproj">
-      <Project>{de23fbc9-da48-479f-94dd-bc3477d7e28d}</Project>
-      <Name>iCat.Catering.IDao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iCat.Catering.IService\iCat.Catering.IService.csproj">
-      <Project>{b5288eed-8e10-4b4c-b43e-dae0de60ff01}</Project>
-      <Name>iCat.Catering.IService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iCat.Catering.Model\iCat.Catering.Model.csproj">
-      <Project>{7135e608-390a-4303-8aac-e9e53048cbf6}</Project>
-      <Name>iCat.Catering.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iCat.Catering.DBMapping\iCat.Catering.DBMapping.csproj">
-      <Project>{22a24609-9758-4b14-b7ee-895babb6c28f}</Project>
-      <Name>iCat.Catering.DBMapping</Name>
-    </ProjectReference>
+    <Content Include="Spring.Aop.dll" />
+    <Content Include="Spring.Core.dll" />
+    <Content Include="Spring.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

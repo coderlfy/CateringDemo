@@ -150,6 +150,12 @@ namespace iCat.Catering.Service
             #endregion
         }
         #endregion
+
+
+        public FoodData GetData(EntityFood food)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
