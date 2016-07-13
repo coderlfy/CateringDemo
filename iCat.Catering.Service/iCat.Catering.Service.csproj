@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39ca0989-8622-4373-a40b-d495894cfa9c}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iCat.Catering.Service</RootNamespace>
+    <AssemblyName>iCat.Catering.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+<Compile Include="FoodService.cs" />
+<Compile Include="OrderService.cs" />
+<Compile Include="OrderDetailService.cs" />
+<Compile Include="TypeCodeService.cs" />
+
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+<ProjectReference Include="..\iCat.Catering.IDao\iCat.Catering.IDao.csproj">
+          <Project>{de23fbc9-da48-479f-94dd-bc3477d7e28d}</Project>
+          <Name>iCat.Catering.IDao</Name>
+        </ProjectReference>
+<ProjectReference Include="..\iCat.Catering.IService\iCat.Catering.IService.csproj">
+          <Project>{b5288eed-8e10-4b4c-b43e-dae0de60ff01}</Project>
+          <Name>iCat.Catering.IService</Name>
+        </ProjectReference>
+<ProjectReference Include="..\iCat.Catering.Model\iCat.Catering.Model.csproj">
+          <Project>{7135e608-390a-4303-8aac-e9e53048cbf6}</Project>
+          <Name>iCat.Catering.Model</Name>
+        </ProjectReference>
+<ProjectReference Include="..\iCat.Catering.DBMapping\iCat.Catering.DBMapping.csproj">
+          <Project>{22a24609-9758-4b14-b7ee-895babb6c28f}</Project>
+          <Name>iCat.Catering.DBMapping</Name>
+        </ProjectReference>
+
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
+
