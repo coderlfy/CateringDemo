@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="OrderBusiness.cs" />
     <Compile Include="OrderDetailBusiness.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="SpringKeys.cs" />
     <Compile Include="threads\AppTimer.cs" />
     <Compile Include="threads\DBTimerThread.cs" />
