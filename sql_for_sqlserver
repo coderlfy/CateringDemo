@@ -1,0 +1,400 @@
+/*==============================================================*/
+/* DBMS name:      Microsoft SQL Server 2012                    */
+/* Created on:     2016/7/12 23:39:38                           */
+/*==============================================================*/
+
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('dbo.Food') and o.name = 'FK_FOOD_REFERENCE_TYPECODE')
+alter table dbo.Food
+   drop constraint FK_FOOD_REFERENCE_TYPECODE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('dbo.OrderDetail') and o.name = 'FK_ORDERDET_REFERENCE_ORDER')
+alter table dbo.OrderDetail
+   drop constraint FK_ORDERDET_REFERENCE_ORDER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('dbo.OrderDetail') and o.name = 'FK_ORDERDET_REFERENCE_FOOD')
+alter table dbo.OrderDetail
+   drop constraint FK_ORDERDET_REFERENCE_FOOD
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('dbo.Food')
+            and   type = 'U')
+   drop table dbo.Food
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('dbo."Order"')
+            and   type = 'U')
+   drop table dbo."Order"
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('dbo.OrderDetail')
+            and   type = 'U')
+   drop table dbo.OrderDetail
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('dbo.TypeCode')
+            and   type = 'U')
+   drop table dbo.TypeCode
+go
+
+drop schema dbo
+go
+
+/*==============================================================*/
+/* User: dbo                                                    */
+/*==============================================================*/
+create schema dbo
+go
+
+/*==============================================================*/
+/* Table: Food                                                  */
+/*==============================================================*/
+create table dbo.Food (
+   f_ID                 uniqueidentifier     not null,
+   Morp                 uniqueidentifier     null,
+   ViewNO               nvarchar(10)         null,
+   FoodName             nvarchar(50)         null,
+   Price                decimal(10,2)        null,
+   constraint PK_FOOD primary key (f_ID)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.Food')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'f_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Food', 'column', 'f_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '关键字',
+   'user', 'dbo', 'table', 'Food', 'column', 'f_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.Food')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Morp')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Food', 'column', 'Morp'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '形态（菜、汤、饮料）',
+   'user', 'dbo', 'table', 'Food', 'column', 'Morp'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.Food')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ViewNO')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Food', 'column', 'ViewNO'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '显示的编号',
+   'user', 'dbo', 'table', 'Food', 'column', 'ViewNO'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.Food')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'FoodName')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Food', 'column', 'FoodName'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '食物名称',
+   'user', 'dbo', 'table', 'Food', 'column', 'FoodName'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.Food')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Price')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Food', 'column', 'Price'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '单价',
+   'user', 'dbo', 'table', 'Food', 'column', 'Price'
+go
+
+/*==============================================================*/
+/* Table: "Order"                                               */
+/*==============================================================*/
+create table dbo."Order" (
+   o_ID                 uniqueidentifier     not null,
+   orderNO              nvarchar(10)         null,
+   writeTime            datetime             null,
+   writeIP              nvarchar(15)         null,
+   constraint PK_ORDER primary key (o_ID)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo."Order"')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'o_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Order', 'column', 'o_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '关键字',
+   'user', 'dbo', 'table', 'Order', 'column', 'o_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo."Order"')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'orderNO')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Order', 'column', 'orderNO'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '订单编号',
+   'user', 'dbo', 'table', 'Order', 'column', 'orderNO'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo."Order"')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'writeTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Order', 'column', 'writeTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '出单时刻',
+   'user', 'dbo', 'table', 'Order', 'column', 'writeTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo."Order"')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'writeIP')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'Order', 'column', 'writeIP'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '出单人IP',
+   'user', 'dbo', 'table', 'Order', 'column', 'writeIP'
+go
+
+/*==============================================================*/
+/* Table: OrderDetail                                           */
+/*==============================================================*/
+create table dbo.OrderDetail (
+   d_ID                 uniqueidentifier     not null,
+   o_ID                 uniqueidentifier     null,
+   f_ID                 uniqueidentifier     null,
+   constraint PK_ORDERDETAIL primary key (d_ID)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.OrderDetail')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'd_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'd_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '关键字',
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'd_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.OrderDetail')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'o_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'o_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '订单编号',
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'o_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.OrderDetail')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'f_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'f_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '食物编号',
+   'user', 'dbo', 'table', 'OrderDetail', 'column', 'f_ID'
+go
+
+/*==============================================================*/
+/* Table: TypeCode                                              */
+/*==============================================================*/
+create table dbo.TypeCode (
+   c_ID                 uniqueidentifier     not null,
+   PType                nvarchar(10)         null,
+   name                 nvarchar(50)         null,
+   writeTime            datetime             null,
+   writeIP              nvarchar(15)         null,
+   constraint PK_TYPECODE primary key (c_ID)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.TypeCode')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'c_ID')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'c_ID'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '关键字',
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'c_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.TypeCode')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PType')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'PType'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '父类别编号',
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'PType'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.TypeCode')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'name')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'name'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '类别描述',
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'name'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.TypeCode')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'writeTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'writeTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '录入时刻',
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'writeTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('dbo.TypeCode')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'writeIP')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'writeIP'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '录入人IP',
+   'user', 'dbo', 'table', 'TypeCode', 'column', 'writeIP'
+go
+
+alter table dbo.Food
+   add constraint FK_FOOD_REFERENCE_TYPECODE foreign key (Morp)
+      references dbo.TypeCode (c_ID)
+go
+
+alter table dbo.OrderDetail
+   add constraint FK_ORDERDET_REFERENCE_ORDER foreign key (o_ID)
+      references dbo."Order" (o_ID)
+go
+
+alter table dbo.OrderDetail
+   add constraint FK_ORDERDET_REFERENCE_FOOD foreign key (f_ID)
+      references dbo.Food (f_ID)
+go
+
