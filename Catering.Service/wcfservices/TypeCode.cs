@@ -17,5 +17,14 @@ namespace Catering.Service
             throw new NotImplementedException();
             #endregion
         }
+
+
+        public string GetTypeCodes(
+            iCat.Catering.Model.EntityTypeCode typeCode)
+        {
+            #region
+            return new TypeCodeBusiness().GetJson(typeCode);
+            #endregion
+        }
     }
 }

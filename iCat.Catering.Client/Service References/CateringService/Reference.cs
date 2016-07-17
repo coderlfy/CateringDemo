@@ -128,6 +128,9 @@ namespace iCat.Catering.Client.CateringService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITypeCode/AddTypeCode", ReplyAction="http://tempuri.org/ITypeCode/AddTypeCodeResponse")]
         string AddTypeCode(iCat.Catering.Client.CateringService.EntityTypeCode typeCode, string logonUser, string logonUserIp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITypeCode/GetTypeCodes", ReplyAction="http://tempuri.org/ITypeCode/GetTypeCodesResponse")]
+        string GetTypeCodes(iCat.Catering.Client.CateringService.EntityTypeCode typeCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -159,6 +162,10 @@ namespace iCat.Catering.Client.CateringService {
         
         public string AddTypeCode(iCat.Catering.Client.CateringService.EntityTypeCode typeCode, string logonUser, string logonUserIp) {
             return base.Channel.AddTypeCode(typeCode, logonUser, logonUserIp);
+        }
+        
+        public string GetTypeCodes(iCat.Catering.Client.CateringService.EntityTypeCode typeCode) {
+            return base.Channel.GetTypeCodes(typeCode);
         }
     }
 }

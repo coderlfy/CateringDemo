@@ -23,10 +23,20 @@
   <wsdl:message name="ITypeCode_AddTypeCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTypeCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="ITypeCode_GetTypeCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTypeCodes" />
+  </wsdl:message>
+  <wsdl:message name="ITypeCode_GetTypeCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTypeCodesResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="ITypeCode">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddTypeCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ITypeCode/AddTypeCode" message="tns:ITypeCode_AddTypeCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITypeCode/AddTypeCodeResponse" message="tns:ITypeCode_AddTypeCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetTypeCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITypeCode/GetTypeCodes" message="tns:ITypeCode_GetTypeCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITypeCode/GetTypeCodesResponse" message="tns:ITypeCode_GetTypeCodes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ITypeCode" type="tns:ITypeCode">
@@ -35,6 +45,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="AddTypeCode">
       <soap12:operation soapAction="http://tempuri.org/ITypeCode/AddTypeCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeCodes">
+      <soap12:operation soapAction="http://tempuri.org/ITypeCode/GetTypeCodes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

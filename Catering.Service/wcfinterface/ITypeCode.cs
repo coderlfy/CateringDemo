@@ -13,5 +13,8 @@ namespace Catering.Service
         [OperationContract]
         string AddTypeCode(EntityTypeCode typeCode,
              string logonUser, string logonUserIp);
+
+        [OperationContract]
+        string GetTypeCodes(EntityTypeCode typeCode);
     }
 }

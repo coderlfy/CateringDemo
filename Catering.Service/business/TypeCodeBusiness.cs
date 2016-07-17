@@ -25,9 +25,14 @@ namespace Catering.Service
             : base(logonUserId, logonUserIp)
         { }
         public TypeCodeBusiness(
-            string logonUserId) 
+            string logonUserId = "") 
             : base(logonUserId)
         { }
+
+        public string GetJson(EntityTypeCode typecode)
+        {
+            return JsHelper.Get(_typeCodeService.GetTypeCodeByKeys(typecode));
+        }
         /// <summary>
         /// 根据关键字获取实体对象
         /// </summary>

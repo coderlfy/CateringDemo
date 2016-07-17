@@ -128,11 +128,16 @@ namespace iCat.Catering.Service
             #region
             TypeCodeData ds = null;
             QueryCondition condition = new QueryCondition();
-            
+
             condition._DBContainer.AddAndCondition(
-                TypeCodeMapping.c_ID, 
-                EnumCondition.Equal, 
+                TypeCodeMapping.c_ID,
+                EnumCondition.Equal,
                 typeCode.c_ID, EnumSqlType.uniqguid);
+
+            condition._DBContainer.AddAndCondition(
+                TypeCodeMapping.PType,
+                EnumCondition.Equal,
+                typeCode.PType, EnumSqlType.nvarchar);
 
             ds = _TypeCodeDao.SelectSingleT(condition);
             return ds;
