@@ -1,4 +1,5 @@
-﻿using iCat.Catering.Client.entity;
+﻿using Foundation.Core;
+using iCat.Catering.Client.entity;
 using iCat.Catering.Model;
 using Newtonsoft.Json;
 using System;
@@ -14,21 +15,21 @@ namespace iCat.Catering.Client.form
 {
     public partial class FrmCode : Form
     {
-        private JsonSerializerSettings _jSetting = null;
+        private List<TypeCodeOfType> _codeTypes = null;
+        private CateringService.TypeCodeClient _typecodeService = null;
+
         public FrmCode()
         {
+            #region
             InitializeComponent();
 
-            if (this._jSetting == null)
-            {
-                this._jSetting = new JsonSerializerSettings();
-                this._jSetting.NullValueHandling = NullValueHandling.Ignore;
-            }
-
+            //初始化码值服务接口的服务对象
             if (_typecodeService == null)
                 _typecodeService = new CateringService.TypeCodeClient();
 
+            //初始化界面中的码值父类型控件
             this.initTypeCodeOfType();
+            #endregion
         }
 
         private void btnSave_Click(
@@ -37,10 +38,9 @@ namespace iCat.Catering.Client.form
 
         }
 
-        private List<TypeCodeOfType> _codeTypes = null;
-        private CateringService.TypeCodeClient _typecodeService = null;
         private void initTypeCodeOfType()
         {
+            #region
             //初始化数据
             if (_codeTypes == null)
             {
@@ -53,23 +53,34 @@ namespace iCat.Catering.Client.form
             this.lbTypeCode.DisplayMember = "Name";
             this.lbTypeCode.ValueMember = "PType";
 
+            //给码值父类型添加选择事件
             this.lbTypeCode.SelectedIndexChanged += lbTypeCode_SelectedIndexChanged;
 
+            //首次进入本页面需要激活
+            //第一个默认选择的码值类型列表显示相应的所有码值
             lbTypeCode_SelectedIndexChanged(null, null);
+            #endregion
         }
 
         private void lbTypeCode_SelectedIndexChanged(
             object sender, EventArgs e)
         {
+            #region
+            //调用服务端的码值列表
+            //拿到的是json格式的字符串
             string json = _typecodeService.GetTypeCodes(
                 new CateringService.EntityTypeCode(){ 
                     PType = lbTypeCode.SelectedValue.ToString()
                 });
 
+            //将字符串反序列化成对象（此处的对象为表格中显示的数据集）
             TypeCodeData typecodeds = JsonConvert.DeserializeObject<TypeCodeData>(
-                json, this._jSetting);
+                json, JsonHelperV2._JsonSettingIgnoreNULL);
 
+
+            //将数据集绑定到控件上
             this.dgvTypeList.DataSource = typecodeds.Tables[0].DefaultView;
+            #endregion
         }
 
         private void FrmCode_Load(

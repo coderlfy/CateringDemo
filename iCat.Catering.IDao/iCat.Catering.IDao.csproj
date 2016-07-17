@@ -47,10 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomSpring.Core\CustomSpring.Core.csproj">
-      <Project>{4de64906-b976-4de5-a7d3-35772dd086c1}</Project>
-      <Name>CustomSpring.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Foundation.Core\Foundation.Core.csproj">
       <Project>{398b7fee-94cd-4f66-a5b4-180f8e443c83}</Project>
       <Name>Foundation.Core</Name>

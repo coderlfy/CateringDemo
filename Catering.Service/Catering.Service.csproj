@@ -85,7 +85,6 @@
     <Compile Include="business\TypeCodeBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="threads\ThreadManager.cs" />
-    <Compile Include="util\JsonHelper.cs" />
     <Compile Include="wcfbehavior\CustomBehavior.cs" />
     <Compile Include="wcfhost\Host.cs" />
     <Compile Include="wcfinterface\ITypeCode.cs" />
@@ -138,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="common\" />
+    <Folder Include="util\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

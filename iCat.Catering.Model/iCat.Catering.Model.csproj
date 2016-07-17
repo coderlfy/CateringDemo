@@ -39,18 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="data\FoodData.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="data\OrderData.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="data\OrderDetailData.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="data\TypeCodeData.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="data\FoodData.cs" />
+    <Compile Include="data\OrderData.cs" />
+    <Compile Include="data\OrderDetailData.cs" />
+    <Compile Include="data\TypeCodeData.cs" />
     <Compile Include="entity\EntityFood.cs" />
     <Compile Include="entity\EntityOrder.cs" />
     <Compile Include="entity\EntityOrderDetail.cs" />

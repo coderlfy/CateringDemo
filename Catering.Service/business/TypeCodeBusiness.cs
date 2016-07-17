@@ -31,7 +31,7 @@ namespace Catering.Service
 
         public string GetJson(EntityTypeCode typecode)
         {
-            return JsHelper.Get(_typeCodeService.GetTypeCodeByKeys(typecode));
+            return JsonHelperV2.GetJson(_typeCodeService.GetTypeCodeByKeys(typecode));
         }
         /// <summary>
         /// 根据关键字获取实体对象

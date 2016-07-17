@@ -5,20 +5,35 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Catering.Service
+namespace Foundation.Core
 {
-    class JsHelper
+    public class JsonHelperV2
     {
-        public static string Get(object jsonObject)
+        private static JsonSerializerSettings _jSettingIgnoreNULL = null;
+        public static JsonSerializerSettings _JsonSettingIgnoreNULL
+        {
+            get {
+                if (_jSettingIgnoreNULL == null)
+                {
+                    _jSettingIgnoreNULL = new JsonSerializerSettings();
+                    _jSettingIgnoreNULL.NullValueHandling = NullValueHandling.Ignore;
+                }
+
+                return _jSettingIgnoreNULL;
+            }
+        }
+
+        public static string GetJson(
+            object jsonObject)
         {
             var jSetting = new JsonSerializerSettings();
             jSetting.DefaultValueHandling = DefaultValueHandling.Ignore;
             jSetting.NullValueHandling = NullValueHandling.Ignore;
-            //jSetting.
             return Format(JsonConvert.SerializeObject(jsonObject, jSetting));
         }
 
-        private static string Format(string json)
+        private static string Format(
+            string json)
         {
             JsonSerializer serializer = new JsonSerializer();
             TextReader tr = new StringReader(json);

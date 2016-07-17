@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -71,6 +75,7 @@
     <Compile Include="json\JsonException.cs" />
     <Compile Include="json\JsonFilter.cs" />
     <Compile Include="json\JsonHelper.cs" />
+    <Compile Include="json\JsonHelperV2.cs" />
     <Compile Include="json\TreeJsonHelper.cs" />
     <Compile Include="condition\EnumSQLOrderBY.cs" />
     <Compile Include="condition\PageSort.cs" />
