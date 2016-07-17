@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnFlushCache = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbDebugJson = new System.Windows.Forms.CheckBox();
             this.cbDebugSelectCountSql = new System.Windows.Forms.CheckBox();
@@ -57,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.btnFlushCache = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +82,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "主界面";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnFlushCache
+            // 
+            this.btnFlushCache.Location = new System.Drawing.Point(332, 277);
+            this.btnFlushCache.Name = "btnFlushCache";
+            this.btnFlushCache.Size = new System.Drawing.Size(80, 23);
+            this.btnFlushCache.TabIndex = 16;
+            this.btnFlushCache.Text = "刷新缓存";
+            this.btnFlushCache.UseVisualStyleBackColor = true;
+            this.btnFlushCache.Click += new System.EventHandler(this.btnFlushCache_Click);
             // 
             // groupBox3
             // 
@@ -364,16 +374,6 @@
             this.tabControl1.Size = new System.Drawing.Size(570, 334);
             this.tabControl1.TabIndex = 0;
             // 
-            // btnFlushCache
-            // 
-            this.btnFlushCache.Location = new System.Drawing.Point(332, 277);
-            this.btnFlushCache.Name = "btnFlushCache";
-            this.btnFlushCache.Size = new System.Drawing.Size(80, 23);
-            this.btnFlushCache.TabIndex = 16;
-            this.btnFlushCache.Text = "刷新缓存";
-            this.btnFlushCache.UseVisualStyleBackColor = true;
-            this.btnFlushCache.Click += new System.EventHandler(this.btnFlushCache_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -386,7 +386,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "综合办公平台服务端";
+            this.Text = "餐饮系统服务端";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

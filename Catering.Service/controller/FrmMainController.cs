@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WSSocket;
 
 namespace Catering.Service
 {
@@ -51,8 +50,7 @@ namespace Catering.Service
 
             SpringManager._EnableViewSaveSql =
 Convert.ToBoolean(DebugConfig._EnableDebugThread);
-            TcpServerEx._EnableViewDebug =
-    Convert.ToBoolean(DebugConfig._EnableDebugSocket);
+            //TcpServerEx._EnableViewDebug = Convert.ToBoolean(DebugConfig._EnableDebugSocket);
 
             #endregion
         }

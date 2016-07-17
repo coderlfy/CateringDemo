@@ -31,29 +31,6 @@ namespace Catering.Service.wcfhost
                     }
                 }
 
-                #region 之前代码
-                //addServiceEndPoint(typeof(IOfficeDocumentTemplate), "OfficeDocumentTemplate");
-                //addServiceEndPoint(typeof(IOfficeDocumentOperater), "OfficeDocumentOperater");
-                //addServiceEndPoint(typeof(IOfficeDocumentDirection), "OfficeDocumentDirection");
-                //addServiceEndPoint(typeof(IOfficeDocumentType), "OfficeDocumentType");
-                //addServiceEndPoint(typeof(IOfficeDocumentTempProcFile), "OfficeDocumentTempProcFile");
-                //addServiceEndPoint(typeof(IOfficeDocumentFileMove), "OfficeDocumentFileMove");
-                //addServiceEndPoint(typeof(IOfficeDocumentHistoryProcFile), "OfficeDocumentHistoryProcFile");
-                //addServiceEndPoint(typeof(IOfficeDocumentIndex), "IOfficeDocumentIndex");
-                //addServiceEndPoint(typeof(IOfficeDocumentTempSegment), "IOfficeDocumentTempSegment");
-                //addServiceEndPoint(typeof(IMessageForSystem), "IMessageForSystem");
-                //addServiceEndPoint(typeof(ISystemMenu), "ISystemMenu");
-                //addServiceEndPoint(typeof(ISystemLogin), "ISystemLogin");
-                //addServiceEndPoint(typeof(ISystemApplicationUser), "ISystemApplicationUser");
-                //addServiceEndPoint(typeof(IIMGroupUser), "IIMGroup");
-                //addServiceEndPoint(typeof(IIMGroupVerify), "IIMGroupVerify");
-                //addServiceEndPoint(typeof(IIMGroupPullUsers), "IIMGroupPullUsers");
-                //addServiceEndPoint(typeof(IIMGroupPullUsersVerify), " IIMGroupPullUsersVerify");
-                //addServiceEndPoint(typeof(IIMApplyForGroup), "IIMApplyForGroup");
-                //addServiceEndPoint(typeof(IIMUsers), "IIMUsers");
-                //addServiceEndPoint(typeof(ISystemUserInfoTree), "ISystemUserInfoTree");
-                //addServiceEndPoint(typeof(ISystemDCoutent), "ISystemDCoutent");
-                #endregion
                 CustomBehavior.Add(_host);
             }
 

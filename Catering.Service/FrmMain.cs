@@ -1,18 +1,16 @@
-﻿using CustomSpring.Core;
+﻿using Catering.Service.customize;
+using Catering.Service.threads;
+using Catering.Service.wcfhost;
+using CustomSpring.Core;
 using Foundation.Core;
-using NormalDocumentOffice.WinServer.customize;
-using NormalDocumentOffice.WinServer.threads;
-using NormalDocumentOffice.WinServer.wcfhost;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WSSocket;
 
 namespace Catering.Service
 {
@@ -149,8 +147,7 @@ namespace Catering.Service
                 DebugConfig._KeyNameEnableDebugSocket
                 );
 
-            TcpServerEx._EnableViewDebug =
-    Convert.ToBoolean(DebugConfig._EnableDebugSocket);
+            //TcpServerEx._EnableViewDebug = Convert.ToBoolean(DebugConfig._EnableDebugSocket);
             #endregion
         }
 
@@ -201,7 +198,7 @@ namespace Catering.Service
             object sender, EventArgs e)
         {
             #region
-            new SystemBusiness("backgroundsystem").RefreshAllModulesCache();
+            //new SystemBusiness("backgroundsystem").RefreshAllModulesCache();
             MessageBox.Show("缓存已刷新，客户端可进行刷新来获取最新数据！");
             #endregion
         }

@@ -27,7 +27,7 @@ namespace Catering.Service.customize
 
         private static object _defaultServiceURL = "net.tcp://localhost:22222";
         private static object _logDirectoryName = "logs";
-        private static string _appName = "十七局综合办公平台服务端（二期）";
+        private static string _appName = "餐饮系统服务端";
         private static object _enableAutoStartService = false;
 
         public static object _ServiceURL

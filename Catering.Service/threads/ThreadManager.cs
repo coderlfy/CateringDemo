@@ -1,18 +1,18 @@
-﻿using Catering.Service.Index.Archive;
+﻿//using Catering.Service.Index.Archive;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using WSSocket;
+//using WSSocket;
 
 namespace Catering.Service.threads
 {
     class ThreadManager
     {
         private static IList<AbstractThread> _threads = null;
-        private static TcpServerEx _tcpFlashAuthServer = null;
-        public static TcpServerEx _tcpMsgServer = null;
+        //private static TcpServerEx _tcpFlashAuthServer = null;
+        //public static TcpServerEx _tcpMsgServer = null;
 
         /// <summary>
         /// 
@@ -23,10 +23,10 @@ namespace Catering.Service.threads
             foreach (AbstractThread thd in _threads)
                 thd._Status = ThreadStatus.Started;
 
-            if (!_tcpFlashAuthServer._IsSuccessStarted)
-                _tcpFlashAuthServer.StartListen(843);
-            if (!_tcpMsgServer._IsSuccessStarted)
-                _tcpMsgServer.StartListen(1818);
+            //if (!_tcpFlashAuthServer._IsSuccessStarted)
+            //    _tcpFlashAuthServer.StartListen(843);
+            //if (!_tcpMsgServer._IsSuccessStarted)
+            //    _tcpMsgServer.StartListen(1818);
 
             #endregion
         }
@@ -52,22 +52,22 @@ namespace Catering.Service.threads
                     _FrmMain = frmMain
                 });
                 _threads.Add(new DBTimerThread(false));
-                _threads.Add(new RefreshBusinessCacheThread(false));
-                _threads.Add(new SyncAuthThread(true));
-                _threads.Add(new NoticeThread(true));
+                //_threads.Add(new RefreshBusinessCacheThread(false));
+                //_threads.Add(new SyncAuthThread(true));
+                //_threads.Add(new NoticeThread(true));
 
-                _threads.Add(new ArchiveIndexThread(true)
-                {
-                    _Status = ThreadStatus.Stopped
-                });
-                _threads.Add(new ArchiveQueryDataThread(true)
-                {
-                    _Status = ThreadStatus.Stopped
-                });
-                _threads.Add(new IndexThread(true)
-                { 
-                    _Status = ThreadStatus.Started
-                });
+                //_threads.Add(new ArchiveIndexThread(true)
+                //{
+                //    _Status = ThreadStatus.Stopped
+                //});
+                //_threads.Add(new ArchiveQueryDataThread(true)
+                //{
+                //    _Status = ThreadStatus.Stopped
+                //});
+                //_threads.Add(new IndexThread(true)
+                //{ 
+                //    _Status = ThreadStatus.Started
+                //});
                 foreach (AbstractThread thd in _threads)
                 {
                     Thread temp = new Thread(new ThreadStart(thd.Start));
@@ -75,16 +75,16 @@ namespace Catering.Service.threads
                     temp.Start();
                 }
             }
-            if (_tcpFlashAuthServer == null)
-            {
-                _tcpFlashAuthServer = new TcpServerEx();
-                _tcpFlashAuthServer._Receiver = new FlashAuthSwitcher();
-            }
-            if (_tcpMsgServer == null)
-            {
-                _tcpMsgServer = new TcpServerEx();
-                _tcpMsgServer._Receiver = new WSServerSwitcher();
-            }
+            //if (_tcpFlashAuthServer == null)
+            //{
+            //    _tcpFlashAuthServer = new TcpServerEx();
+            //    _tcpFlashAuthServer._Receiver = new FlashAuthSwitcher();
+            //}
+            //if (_tcpMsgServer == null)
+            //{
+            //    _tcpMsgServer = new TcpServerEx();
+            //    _tcpMsgServer._Receiver = new WSServerSwitcher();
+            //}
             #endregion
         }
     }

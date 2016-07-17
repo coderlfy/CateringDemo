@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+<!--spring dao starting-->
+<object id="foodDao" type="iCat.Catering.Dao.FoodDao, iCat.Catering.Dao">
+    <property name="AdoTemplate" ref="adoTemplate"/>
+  </object>
+<object id="orderDao" type="iCat.Catering.Dao.OrderDao, iCat.Catering.Dao">
+    <property name="AdoTemplate" ref="adoTemplate"/>
+  </object>
+<object id="orderDetailDao" type="iCat.Catering.Dao.OrderDetailDao, iCat.Catering.Dao">
+    <property name="AdoTemplate" ref="adoTemplate"/>
+  </object>
+<object id="typeCodeDao" type="iCat.Catering.Dao.TypeCodeDao, iCat.Catering.Dao">
+    <property name="AdoTemplate" ref="adoTemplate"/>
+  </object>
+
+<!--spring dao end-->
+
+<!--spring service starting-->
+<object id="foodService" type="iCat.Catering.Service.FoodService, iCat.Catering.Service">
+    <property name="_FoodDao" ref="foodDao"/>
+  </object>
+<object id="orderService" type="iCat.Catering.Service.OrderService, iCat.Catering.Service">
+    <property name="_OrderDao" ref="orderDao"/>
+  </object>
+<object id="orderDetailService" type="iCat.Catering.Service.OrderDetailService, iCat.Catering.Service">
+    <property name="_OrderDetailDao" ref="orderDetailDao"/>
+  </object>
+<object id="typeCodeService" type="iCat.Catering.Service.TypeCodeService, iCat.Catering.Service">
+    <property name="_TypeCodeDao" ref="typeCodeDao"/>
+  </object>
+
+<!--spring service end-->
+</objects>
+

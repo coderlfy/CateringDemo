@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDBManagerDao.cs" />
     <Compile Include="IFoodDao.cs" />
     <Compile Include="IOrderDao.cs" />
     <Compile Include="IOrderDetailDao.cs" />

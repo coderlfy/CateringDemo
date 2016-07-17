@@ -33,8 +33,23 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\CommonDLL\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop">
+      <HintPath>..\CommonDLL\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\CommonDLL\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\CommonDLL\Spring.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,87 +58,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="business\AbstractBusiness.cs" />
     <Compile Include="controller\FrmMainController.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="customize\CustomConfig.cs" />
     <Compile Include="customize\DebugConfig.cs" />
-    <Compile Include="FoodBusiness.cs" />
+    <Compile Include="business\FoodBusiness.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderBusiness.cs" />
-    <Compile Include="OrderDetailBusiness.cs" />
+    <Compile Include="business\OrderBusiness.cs" />
+    <Compile Include="business\OrderDetailBusiness.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpringKeys.cs" />
     <Compile Include="threads\AppTimer.cs" />
     <Compile Include="threads\DBTimerThread.cs" />
-    <Compile Include="threads\IndexThread.cs" />
-    <Compile Include="threads\NoticeThread.cs" />
-    <Compile Include="threads\RefreshBusinessCacheThread.cs" />
-    <Compile Include="threads\SyncAuthThread.cs" />
     <Compile Include="threads\ThreadAbstract.cs" />
-    <Compile Include="TypeCodeBusiness.cs" />
+    <Compile Include="business\TypeCodeBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="threads\ThreadManager.cs" />
     <Compile Include="wcfbehavior\CustomBehavior.cs" />
     <Compile Include="wcfhost\Host.cs" />
-    <Compile Include="wcfservices\addressbook\AddrBookContacts.cs" />
-    <Compile Include="wcfservices\addressbook\AddrBookPersonalInfo.cs" />
-    <Compile Include="wcfservices\archive\ArchiveAuthorizeApplyFor.cs" />
-    <Compile Include="wcfservices\archive\ArchiveAuthorizeCancelLogs.cs" />
-    <Compile Include="wcfservices\archive\ArchiveAuthorizeCheck.cs" />
-    <Compile Include="wcfservices\archive\ArchiveAuthorizeCurrent.cs" />
-    <Compile Include="wcfservices\archive\ArchiveExecOkLogs.cs" />
-    <Compile Include="wcfservices\archive\ArchiveFileType.cs" />
-    <Compile Include="wcfservices\archive\ArchiveHistoryProcFile.cs" />
-    <Compile Include="wcfservices\archive\ArchiveIndex.cs" />
-    <Compile Include="wcfservices\archive\ArchiveRealFile.cs" />
-    <Compile Include="wcfservices\archive\ArchiveReferenceLogs.cs" />
-    <Compile Include="wcfservices\archive\ArchiveType.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentDirection.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentFileMove.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentHistoryProcFile.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentIndex.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentOperater.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentReferenceLogs.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentTemplate.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentTempProcFile.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentTempSegment.cs" />
-    <Compile Include="wcfservices\document\OfficeDocumentType.cs" />
-    <Compile Include="wcfservices\email\EmailAttachment.cs" />
-    <Compile Include="wcfservices\email\EmailDraftBox.cs" />
-    <Compile Include="wcfservices\email\EmailInBox.cs" />
-    <Compile Include="wcfservices\email\EmailOutBox.cs" />
-    <Compile Include="wcfservices\email\EmailPonderance.cs" />
-    <Compile Include="wcfservices\firstpage\FirstPageModule.cs" />
-    <Compile Include="wcfservices\im\IMApplyForGroup.cs" />
-    <Compile Include="wcfservices\im\IMGroup.cs" />
-    <Compile Include="wcfservices\im\IMGroupPullUsers.cs" />
-    <Compile Include="wcfservices\im\IMGroupPullUsersVerify.cs" />
-    <Compile Include="wcfservices\im\IMGroupUser.cs" />
-    <Compile Include="wcfservices\im\IMGroupVerify.cs" />
-    <Compile Include="wcfservices\im\IMUsers.cs" />
-    <Compile Include="wcfservices\message\MessageForSystem.cs" />
-    <Compile Include="wcfservices\notice\NoticeColumns.cs" />
-    <Compile Include="wcfservices\notice\NoticeContent.cs" />
-    <Compile Include="wcfservices\software\SoftwareType.cs" />
-    <Compile Include="wcfservices\software\SoftwareUploadConstraint.cs" />
-    <Compile Include="wcfservices\software\SoftwareUploadcs.cs" />
-    <Compile Include="wcfservices\software\SoftwareUploadFileType.cs" />
-    <Compile Include="wcfservices\system\System.cs" />
-    <Compile Include="wcfservices\system\SystemApplicationUser.cs" />
-    <Compile Include="wcfservices\system\SystemDCoutent.cs" />
-    <Compile Include="wcfservices\system\SystemLogin.cs" />
-    <Compile Include="wcfservices\system\SystemMenu.cs" />
-    <Compile Include="wcfservices\system\SystemUserInfoTree.cs" />
+    <Compile Include="wcfinterface\ITypeCode.cs" />
+    <Compile Include="wcfservices\TypeCode.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomSpring.Core\CustomSpring.Core.csproj">
+      <Project>{4de64906-b976-4de5-a7d3-35772dd086c1}</Project>
+      <Name>CustomSpring.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Foundation.Core\Foundation.Core.csproj">
       <Project>{398b7fee-94cd-4f66-a5b4-180f8e443c83}</Project>
       <Name>Foundation.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iCat.Catering.Dao\iCat.Catering.Dao.csproj">
+      <Project>{acbe0c89-18e3-4187-bd35-db5e7ec02e6e}</Project>
+      <Name>iCat.Catering.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iCat.Catering.IDao\iCat.Catering.IDao.csproj">
+      <Project>{de23fbc9-da48-479f-94dd-bc3477d7e28d}</Project>
+      <Name>iCat.Catering.IDao</Name>
     </ProjectReference>
     <ProjectReference Include="..\iCat.Catering.Model\iCat.Catering.Model.csproj">
       <Project>{7135e608-390a-4303-8aac-e9e53048cbf6}</Project>
@@ -133,9 +111,20 @@
       <Project>{b5288eed-8e10-4b4c-b43e-dae0de60ff01}</Project>
       <Name>iCat.Catering.IService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iCat.Catering.Service\iCat.Catering.Service.csproj">
+      <Project>{39ca0989-8622-4373-a40b-d495894cfa9c}</Project>
+      <Name>iCat.Catering.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="DBConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DIConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmMain.resx">
@@ -144,7 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="common\" />
-    <Folder Include="wcfinterface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

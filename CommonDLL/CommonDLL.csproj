@@ -42,6 +42,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common.Logging.dll" />
     <Content Include="Spring.Aop.dll" />
     <Content Include="Spring.Core.dll" />
     <Content Include="Spring.Data.dll" />
